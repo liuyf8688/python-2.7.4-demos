@@ -30,6 +30,23 @@ print os.path.join('.', 'test')
 
 print '==================================='
 
+# 创建空文件
+def touch(fname, times=None):
+    with open(fname, 'a'):
+        os.utime(fname, times)
+        
+
+def touch2(fname, times=None):
+    fhandle = open(fname, 'a')
+    try:
+        os.utime(fname, times)
+    finally:
+        fhandle.close()
+
+touch('test.txt')
+# 删除文件是os.remove(path)
+#os.remove(os.path.join('.', 'test.txt'))
+
 os.rmdir(os.path.join('.', 'test'))
 
 os.mkdir(os.path.join('.', 'test'))
